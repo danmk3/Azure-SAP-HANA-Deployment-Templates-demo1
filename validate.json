@@ -1,0 +1,146 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "uniqueDeploymentId": {
+            "type": "string"
+        },
+        "location": {
+            "type": "string",
+            "allowedValues": [
+                "eastus"
+				"eastus2"
+            ]
+        },
+        "subscription": {
+            "type": "string",
+            "allowedValues": [
+                "SAP Dev Test"
+            ]
+        },
+        "vmDeploymentNumber": {
+            "type": "string"
+        },
+        "vmInstanceNumber": {
+            "type": "string"
+        },
+        "vmImage": {
+            "type": "string",
+            "allowedValues": [
+                "Gallery Image - SLES SAP BYOS 12-SP1",
+                "Gallery Image - SLES SAP BYOS 12-SP2",
+                "Gallery Image - SLES SAP BYOS 12-SP3"
+            ]
+        },
+        "vmRole": {
+            "type": "string",
+            "allowedValues": [
+                "App - NetWeaver Gateway",
+                "App - SAP PO",
+                "App - Gateway FES",
+                "App - SAP BW",
+                "App - S/4HANA Utilities",
+                "App - Convergent Charging",
+                "App - Convergent Invoicing",
+                "App - SOM (CRM ABAP)",
+                "App - SOM (CRM JAVA)",
+                "App - Cloud Connector",
+                "DB - NetWeaver Gateway",
+                "DB - SAP PO",
+                "DB - Gateway FES",
+                "DB - SAP BW",
+                "DB - S/4HANA Utilities",
+                "DB - S/4HANA Hybris Billing"
+            ]
+        },
+        "vmAdminUserName": {
+            "type": "string",
+            "defaultValue": "azureuser"
+        },
+        "vmAdminPassword": {
+            "type": "securestring"
+        },
+        "customScriptStorageAccountKey": {
+            "type": "securestring"
+        },
+        "nic1IpAddresses": {
+            "type": "array"
+        },
+        "nic2IpAddresses": {
+            "type": "array"
+        }
+    },
+    "variables": {
+        "subscriptionPrefix": {
+            "SAP Dev Test": "d"
+        },
+        "locationPrefix": {
+            "uksouth": "azsu"
+        },
+        "vmRoleName": {
+            "App - NetWeaver Gateway": "sap",
+            "App - SAP PO": "sap",
+            "App - Gateway FES": "sap",
+            "App - SAP BW": "sap",
+            "App - S/4HANA Utilities": "sap",
+            "App - Convergent Charging": "sap",
+            "App - Convergent Invoicing": "sap",
+            "App - SOM (CRM ABAP)": "sap",
+            "App - SOM (CRM JAVA)": "sap",
+            "App - Cloud Connector": "sap",
+            "DB - NetWeaver Gateway": "han",
+            "DB - SAP PO": "han",
+            "DB - Gateway FES": "han",
+            "DB - SAP BW": "han",
+            "DB - S/4HANA Utilities": "han",
+            "DB - S/4HANA Hybris Billing": "han"
+        },
+        "availabilitySetRoleName": {
+            "App - NetWeaver Gateway": "sap",
+            "App - SAP PO": "sap",
+            "App - Gateway FES": "sap",
+            "App - SAP BW": "sap",
+            "App - S/4HANA Utilities": "sap",
+            "App - Convergent Charging": "sap",
+            "App - Convergent Invoicing": "sap",
+            "App - SOM (CRM ABAP)": "sap",
+            "App - SOM (CRM JAVA)": "sap",
+            "App - Cloud Connector": "sap",
+            "DB - NetWeaver Gateway": "han",
+            "DB - SAP PO": "han",
+            "DB - Gateway FES": "han",
+            "DB - SAP BW": "han",
+            "DB - S/4HANA Utilities": "han",
+            "DB - S/4HANA Hybris Billing": "han"
+        },
+        "prefix": "[toLower(concat(variables('locationPrefix')[parameters('location')], '-', variables('subscriptionPrefix')[parameters('subscription')], '-'))]",
+        "availabilitySetName": "[toLower(concat(variables('prefix'), variables('availabilitySetRoleName')[parameters('vmRole')], parameters('vmDeploymentNumber')))]",
+        "vmName": "[toLower(concat(variables('prefix'), variables('vmRoleName')[parameters('vmRole')], parameters('vmDeploymentNumber'), parameters('vmInstanceNumber')))]",
+        "nic1Name": "[toLower(concat(variables('vmName'), '-nic'))]",
+        "nic2Name": "[toLower(concat(variables('vmName'), '-nic-spn'))]",
+        "customScriptExtensionName": "[concat(variables('vmName'), '-script')]"
+    },
+    "resources": [],
+    "outputs": {
+        "output": {
+            "type": "object",
+            "value": {
+                "uniqueDeploymentId": "[parameters('uniqueDeploymentId')]",
+                "availabilitySetName": "[variables('availabilitySetName')]",
+                "vmName": "[variables('vmName')]",
+                "nic1Name": "[variables('nic1Name')]",
+                "nic2Name": "[variables('nic2Name')]",
+                "location": "[parameters('location')]",
+                "subscription": "[parameters('subscription')]",
+                "vmImage": "[parameters('vmImage')]",
+                "vmRole": "[parameters('vmRole')]",
+                "vmAdminUserName": "[parameters('vmAdminUserName')]",
+                "vmAdminPassword": "[parameters('vmAdminPassword')]",
+                "nic1IpAddresses": "[parameters('nic1IpAddresses')]",
+                "nic2IpAddresses": "[parameters('nic2IpAddresses')]",
+                "customscriptextensionname": "[variables('customScriptExtensionName')]",
+                "customscriptstorageaccountkey" : "[parameters('customScriptStorageAccountKey')]"
+            }
+        }
+    }
+}

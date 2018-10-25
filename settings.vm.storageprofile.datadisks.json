@@ -1,0 +1,322 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "params": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "diskSizes": {
+            "SAP Dev Test": {
+                "App - NetWeaver Gateway": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - SAP PO": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - Gateway FES": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - SAP BW": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - S/4HANA Utilities": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - Convergent Charging": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - Convergent Invoicing": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - SOM (CRM ABAP)": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - SOM (CRM JAVA)": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "App - Cloud Connector": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "DB - NetWeaver Gateway": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 63
+                        },
+                        {
+                            "diskSizeGB": 31
+                        }
+                    ]
+                },
+                "DB - SAP PO": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 63
+                        },
+                        {
+                            "diskSizeGB": 31
+                        }
+                    ]
+                },
+                "DB - Gateway FES": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 63
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 63
+                        },
+                        {
+                            "diskSizeGB": 31
+                        }
+                    ]
+                },
+                "DB - SAP BW": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 511
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "DB - S/4HANA Utilities": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 511
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                },
+                "DB - S/4HANA Hybris Billing": {
+                    "disks": [
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 31
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 255
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 63
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 255
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 63
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 255
+                        },
+                        {
+                            "diskSizeGB": 127
+                        },
+                        {
+                            "diskSizeGB": 63
+                        }
+                    ]
+                }
+            }
+        },
+        "dataDisksObj": {
+            "copy": [
+                {
+                    "name": "dataDisks",
+                    "count": "[length(variables('diskSizes')[parameters('params').subscription][parameters('params').vmRole].disks)]",
+                    "input": {
+                        "lun": "[copyIndex('dataDisks')]",
+                        "createOption": "Empty",
+                        "name": "[concat(parameters('params').vmName,'-datadisk-',padLeft(copyIndex('dataDisks'),2,'0'))]",
+                        "diskSizeGB": "[variables('diskSizes')[parameters('params').subscription][parameters('params').vmRole].disks[copyIndex('dataDisks')].diskSizeGB]"
+                    }
+                }
+            ]
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "output": {
+            "value": "[variables('dataDisksObj')[string('dataDisks')]]",
+            "type": "array"
+        }
+    }
+}

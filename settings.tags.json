@@ -1,0 +1,80 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "params": {
+            "type": "object"
+        }
+    },
+    "variables": {
+        "tagServiceNames": {
+            "App - NetWeaver Gateway": {
+                "tagServiceName": "App - NetWeaver Gateway"
+            },
+            "App - SAP PO": {
+                "tagServiceName": "App - SAP PO"
+            },
+            "App - Gateway FES": {
+                "tagServiceName": "App - Gateway FES"
+            },
+            "App - SAP BW": {
+                "tagServiceName": "App - SAP BW"
+            },
+            "App - S/4HANA Utilities": {
+                "tagServiceName": "App - S/4HANA Utilities"
+            },
+            "App - Convergent Charging": {
+                "tagServiceName": "App - Convergent Charging"
+            },
+            "App - Convergent Invoicing": {
+                "tagServiceName": "App - Convergent Invoicing"
+            },
+            "App - SOM (CRM ABAP)": {
+                "tagServiceName": "App - SOM (CRM ABAP)"
+            },
+            "App - SOM (CRM JAVA)": {
+                "tagServiceName": "App - SOM (CRM JAVA)"
+            },
+            "App - Cloud Connector": {
+                "tagServiceName": "App - Cloud Connector"
+            },
+            "DB - NetWeaver Gateway": {
+                "tagServiceName": "DB - NetWeaver Gateway"
+            },
+            "DB - SAP PO": {
+                "tagServiceName": "DB - SAP PO"
+            },
+            "DB - Gateway FES": {
+                "tagServiceName": "DB - Gateway FES"
+            },
+            "DB - SAP BW": {
+                "tagServiceName": "DB - SAP BW"
+            },
+            "DB - S/4HANA Utilities": {
+                "tagServiceName": "DB - S/4HANA Utilities"
+            },
+            "DB - S/4HANA Hybris Billing": {
+                "tagServiceName": "DB - S/4HANA Hybris Billing"
+            }
+        },
+        "tagEnvironments": {
+            "SAP Dev Test": {
+                "tagEnvironment": "SAP Dev Test"
+            }
+        }
+    },
+    "resources": [],
+    "outputs": {
+        "output": {
+            "type": "object",
+            "value": {
+                "Cost Code ID": "D.4534-02-R01",
+                "Environment": "[variables('tagEnvironments')[parameters('params').subscription].tagEnvironment]",
+                "Service Name": "[variables('tagServiceNames')[parameters('params').vmRole].tagServiceName]",
+                "Service Owner": "David Blowers",
+                "Service Ticket Request ID": "NewCoPrj",
+                "Source": "ARMTemplate"
+            }
+        }
+    }
+}
