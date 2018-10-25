@@ -8,7 +8,7 @@
         "location": {
             "type": "string",
             "allowedValues": [
-                "eastus"
+                "eastus",
 				"eastus2"
             ]
         },
@@ -75,7 +75,7 @@
             "SAP Dev Test": "d"
         },
         "locationPrefix": {
-            "uksouth": "azsu"
+            "useast": "azsu"
         },
         "vmRoleName": {
             "App - NetWeaver Gateway": "sap",
